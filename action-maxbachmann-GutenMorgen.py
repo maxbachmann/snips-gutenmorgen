@@ -43,11 +43,11 @@ def message(client, userdata, msg):
         user, intentname = data['intent']['intentName'].split(':')
 
         if intentname == 'gutenMorgen':
-            answers = ["gute Nacht"]
-            say(session_id, random(answers))
-        elif intentname == 'guteNacht':
             answers = ["guten Morgen"]
-            say(session_id, random(answers))
+            say(session_id, random.choice(answers))
+        elif intentname == 'guteNacht':
+            answers = ["gute Nacht"]
+            say(session_id, random.choice(answers))
     except KeyError:
         pass
 
