@@ -4,4 +4,4 @@ before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends mosquitto mosquitto-clients
 - ./setup.sh
 script:
-- mosquitto
+- python3 action-maxbachmann-GutenMorgen.py
