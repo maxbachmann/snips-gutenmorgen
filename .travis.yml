@@ -1,7 +1,7 @@
 sudo: required   
 dist: trusty
 before_install: 
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends mosquitto mosquitto-clients
 - ./setup.sh
 script:
-- python3 action-maxbachmann-GutenMorgen.py
+- sudo docker run -it -p 1883:1883 eclipse-mosquitto:latest
+
