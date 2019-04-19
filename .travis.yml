@@ -3,5 +3,5 @@ dist: trusty
 before_install: 
 - ./setup.sh
 script:
-- sudo docker run -it -p 1883:1883 eclipse-mosquitto:latest
+- sudo docker run -p 1883:1883 eclipse-mosquitto:latest
 
