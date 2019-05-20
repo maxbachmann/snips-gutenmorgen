@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 import configparser
 import io
 import paho.mqtt.client as mqtt
@@ -15,7 +14,6 @@ class SnipsConfigParser(configparser.SafeConfigParser):
     def to_dict(self):
         return {section: {option_name: option for option_name, option in self.items(section)} for section in self.sections()}
 
-
 def read_configuration_file(configuration_file):
     try:
         with io.open(configuration_file, encoding=CONFIGURATION_ENCODING_FORMAT) as f:
@@ -25,7 +23,6 @@ def read_configuration_file(configuration_file):
     except (IOError, configparser.Error) as e:
         return dict()
 
-
 conf = read_configuration_file(CONFIG_INI)
 print("Conf:", conf)
 
@@ -34,7 +31,6 @@ mqtt_client = mqtt.Client()
 
 def on_connect(client, userdata, flags, rc):
     client.subscribe("hermes/intent/#")
-
 
 def message(client, userdata, msg):
     data = json.loads(msg.payload.decode("utf-8"))
@@ -54,9 +50,6 @@ def message(client, userdata, msg):
 def say(session_id, text):
     mqtt_client.publish('hermes/dialogueManager/endSession',
                         json.dumps({'text': text, "sessionId": session_id}))
-
-
-
 
 if __name__ == "__main__":
     mqtt_client.on_connect = on_connect
